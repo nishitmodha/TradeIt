@@ -1,24 +1,42 @@
 <p id="notice"><%= notice %></p>
+<div class="card">
+	<div class="row no-gutters">
+		<aside class="col-md-6">
+<article class="gallery-wrap">
+<div class="img-big-wrap">
+  <div> <a href="#"> <%= image_tag(@product.product_image) %></a></div>
+</div> <!-- slider-product.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+<article class="content-body">
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+<h2 class="title"><%= @product.title%></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
 
-<p>
-  <strong>Product image:</strong>
-  <%= @product.product_image.filename %>
-</p>
+<div class="mb-3">
+	<var class="price h4"><%= @product.price %></var>
+</div> <!-- price-detail-wrap .// -->
+<p><%= @product.description %></p>
+<hr>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<!-- Quantity
+	<div class="form-row">
+		<div class="form-group col-md flex-grow-0">
+			<label>Quantity</label>
+			<div class="input-group mb-3 input-spinner">
+			  <div class="input-group-prepend">
+			    <button class="btn btn-light" type="button" id="button-plus"> + </button>
+			  </div>
+			  <input type="text" class="form-control" value="1">
+			  <div class="input-group-append">
+			    <button class="btn btn-light" type="button" id="button-minus"> − </button>
+			  </div>
+			</div>
+		</div> 
+	</div>
+-->
+	<a href="#" class="btn  btn-primary"> Buy now </a>
+	<a href="#" class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+</article> <!-- product-info-aside .// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
