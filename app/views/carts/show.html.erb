@@ -1,6 +1,29 @@
-<h2>Your Pragmatic Cart</h2>
-<ul>
-<% @cart.line_items.each do |item| %>
-<li><%= item.quantity %> &times; <%= item.product.title %></li>
-<% end %>
-</ul>
+<div class="card">
+	<article class="card-body">
+		<header class="mb-4">
+			<h4 class="card-title">Review cart</h4>
+		</header>
+			<div class="row">
+      <% @cart.line_items.each do |item| %>
+				<div class="col-sm-3">
+					<figure class="itemside mb-3">
+						<div class="aside border img-xs"><%= image_tag(item.product.product_image)%>
+						<figcaption class="info">
+							<p><%= item.product.title %></p>
+							<span><%= item.quantity %> </span>
+						</figcaption> 
+          </div>
+					</figure>
+				</div> <!-- col.// -->
+      <% end %>
+			</div> <!-- row.// -->
+	</article> <!-- card-body.// -->
+	<article class="card-body border-top">
+
+		<dl class="row">
+		  <dt class="col-sm-10">Total:</dt>
+		  <dd class="col-sm-2 text-right"><strong class="h5 text-dark"><%= number_to_currency(@cart.total_price, :unit => "₹") %></strong></dd>
+		</dl>
+<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+	</article> <!-- card-body.// -->
+</div>

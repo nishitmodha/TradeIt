@@ -12,6 +12,13 @@
       </li>
     </ul>
 
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <% if session[:cart_id] %>
+          <%= link_to 'Cart', cart_path(session[:cart_id]), class:"nav-link" %>
+        <% end %>
+      </li>
+    </ul>
 
   </div>
 </nav>
