@@ -6,10 +6,9 @@
         <%= image_tag(product.product_image) %>
       <% end %>
         <figcaption class="info-wrap">
-          
           <%= link_to product.title, product, class:"title" %>
           <div class="mt-2">
-            <var class="price"><%= product.price %></var> <!-- price-wrap.// -->
+            <var class="price"> <%= number_to_currency(product.price, :unit => "₹") %> </var>
             <a href="#" class="btn btn-sm btn-outline-primary float-right">Add to cart <i class="fa fa-shopping-cart"></i></a>
           </div> <!-- action-wrap.end -->
         </figcaption>
