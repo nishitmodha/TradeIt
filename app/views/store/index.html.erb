@@ -9,7 +9,8 @@
           <%= link_to product.title, product, class:"title" %>
           <div class="mt-2">
             <var class="price"> <%= number_to_currency(product.price, :unit => "₹") %> </var>
-            <a href="#" class="btn btn-sm btn-outline-primary float-right">Add to cart <i class="fa fa-shopping-cart"></i></a>
+            
+            <%= button_to 'Add to Cart', line_items_path(product_id: product), class: "btn btn-sm btn-outline-primary float-right" %>
           </div> <!-- action-wrap.end -->
         </figcaption>
       </figure> <!-- card // -->
