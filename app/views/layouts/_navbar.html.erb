@@ -1,41 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-<%= link_to 'TradeIt', root_path, class:"navbar-brand" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to 'Products', products_path, class:"nav-link" %>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+  <div class="container-fluid">
+    <%= link_to 'TradeIt', root_path, class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-md-auto gap-2">
         <% if session[:cart_id] %>
-          <%= link_to 'Cart', cart_path(session[:cart_id]), class:"nav-link" %>
+          <%= link_to cart_path(session[:cart_id]), class:"nav-link" do %>
+  					<i class="bi bi-cart3"></i>
+					<% end %>
         <% end %>
-      </li>
+        
+        <% if user_signed_in? %>
+        <li class="nav-item dropdown rounded">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill me-2"></i>Profile</a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><%= link_to  current_user.username, edit_user_registration_path, class:"dropdown-item" %></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete , class:"dropdown-item" %>
+            </li>
+          </ul>
+        </li>
+        <%else%>
+        <li class="nav-item rounded">
+          <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item rounded">
+          <%= link_to 'Sign In', new_user_session_path, class:"nav-link active" %>
+        </li>
+        <% end %>
 
-    <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete , class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Edit Profile', edit_user_registration_path, class:"nav-link" %>
-      </li>
-
-      <% else %>
-
-      <li class="nav-item">
-        <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
-      </li>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -28,6 +28,6 @@
 		  <dt class="col-sm-10">Total:</dt>
 		  <dd class="col-sm-2 text-right"><strong class="h5 text-dark"><%= number_to_currency(@cart.total_price, :unit => "₹") %></strong></dd>
 		</dl>
-<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+		<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 	</article> <!-- card-body.// -->
 </div>
